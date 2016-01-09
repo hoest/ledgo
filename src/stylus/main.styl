@@ -1,0 +1,171 @@
+@import 'jeet'
+@import '_settings'
+
+normalize-css()
+base()
+
+body
+  background-color $black
+  color $white
+  font-family $font
+  font-weight 300
+
+  h1, h1, h3, h4, h5, h6
+    font-weight 700
+
+  a
+    color $gray
+
+  .wrapper
+    position relative
+    center($maxwidth)
+
+    header
+      center($maxwidth)
+      span(12/12)
+      fixed()
+      background-color $black
+
+      h1
+        display none
+
+      .payoff
+        span(4/12)
+
+        .inner
+          font-size 1em
+          line-height 50px
+          font-weight 700
+          text-align right
+          padding 0 1em
+
+      nav
+        span(8/12)
+        line-height 50px
+        font-size .7em
+
+        ul
+          list-style none
+          padding 0
+          margin 0
+
+          li
+            padding 0
+            margin 0
+            float left
+
+            a
+              text-decoration none
+              text-transform uppercase
+              font-weight bold
+              display block
+              padding 0 .5em
+              border-right 1px solid $gray
+              position relative
+
+              &:before
+                content ""
+                width 100%
+                height 2px
+                position absolute
+                left 0
+                bottom 2px
+                background-color $white
+                visibility hidden
+                transform scaleX(0)
+                transition all 0.6s ease-in-out 0s
+
+              &:hover, &.active
+                color $white
+
+                &:before
+                  visibility visible
+                  -webkit-transform scaleX(1)
+                  transform scaleX(1)
+
+            &:last-child a
+              border-right none
+
+    main
+      center($maxwidth)
+      span(12/12)
+      fixed()
+      display block
+      top 50px
+      bottom 25px
+      background-image url('./img/empty-room.jpg')
+      background-repeat no-repeat
+      background-size cover
+
+      .ledgo-logo
+        width 150px
+        height 150px
+        background-image url('./img/logo_op_transp.png')
+        background-repeat no-repeat
+        position absolute
+        top .5em
+        right .5em
+
+      .content
+        span(4/12, offset: 4/12)
+        background-color $black
+        height 80%
+        align(vertical)
+        border-radius 10px
+        font-size .9em
+        overflow hidden
+        margin-top 1em
+        margin-bottom 1em
+
+        .inner
+          overflow auto
+          height 100%
+          padding 0 1em
+          margin 1em 0
+
+        h1, h2, h3, h4, h5, h6
+          font-weight 400
+          margin-top 0
+
+    footer
+      center($maxwidth)
+      span(12/12)
+      fixed()
+      bottom 0
+      background-color $black
+
+      .copy
+        font-size .8em
+        span(6/12)
+        line-height 25px
+
+        .inner
+          padding 0 1em
+
+      nav
+        span(6/12)
+        font-size .7em
+
+        ul
+          list-style none
+          padding 0
+          margin 0
+
+          li
+            padding 0
+            margin 0
+            float right
+
+            a
+              text-decoration none
+              text-transform uppercase
+              font-weight bold
+              display block
+              padding .5em
+              border-left 1px solid $gray
+
+              &:hover
+                color $white
+
+            &:last-child a
+              border-left none

@@ -10,6 +10,15 @@ body
   font-family $font
   font-weight 300
 
+  &.adminbar-showing
+    .wrapper
+      header
+        top 32px
+
+      main
+        top ($menubar_height + 32px)
+
+
   h1, h1, h3, h4, h5, h6
     font-weight 700
 
@@ -25,6 +34,7 @@ body
       span(12/12)
       fixed()
       background-color $black
+      top 0
 
       h1
         display none
@@ -34,14 +44,14 @@ body
 
         .inner
           font-size 1em
-          line-height 50px
+          line-height $menubar_height
           font-weight 700
           text-align right
           padding 0 1em
 
       nav
         span(8/12)
-        line-height 50px
+        line-height $menubar_height
         font-size .7em
 
         ul
@@ -76,6 +86,7 @@ body
                 transition all 0.6s ease-in-out 0s
 
               &:hover, &.active
+                transition all 1s ease-in-out 0s
                 color $white
 
                 &:before
@@ -91,15 +102,15 @@ body
       span(12/12)
       fixed()
       display block
-      top 50px
+      top $menubar_height
       bottom 25px
       background-image url('./img/empty-room.jpg')
       background-repeat no-repeat
       background-size cover
 
       .ledgo-logo
-        width 150px
-        height 150px
+        width 75px
+        height 75px
         background-image url('./img/logo_op_transp.png')
         background-repeat no-repeat
         position absolute
@@ -126,6 +137,13 @@ body
         h1, h2, h3, h4, h5, h6
           font-weight 400
           margin-top 0
+
+        h1 a
+          text-decoration none
+          color $white
+
+          &:hover
+            text-decoration underline
 
     footer
       center($maxwidth)

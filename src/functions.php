@@ -2,6 +2,7 @@
 
 function ledgo_register_theme_menu() {
   register_nav_menu('primary', 'Hoofdnavigatie');
+  register_nav_menu('footer', 'Footer-navigatie');
 }
 
 add_action('init', 'ledgo_register_theme_menu');

@@ -17,17 +17,15 @@
       ?>
     </title>
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic,300italic" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
 
     <meta name="author" content="<?php bloginfo('name'); ?>" />
-    <meta name="keywords" content="De Jong Accountants Belastingadviseurs,
-      De Jong, Accountants, Belastingadviseurs, Soest, Nederland, Accountancy,
-      Ronald, Marcel, Belasting, Fincieel advies" />
+    <meta name="keywords" content="" />
 
     <meta property="og:locale" content="nl_NL" />
-    <meta property="og:image" content="<?php bloginfo('stylesheet_directory'); ?>/images/dejong-logo.jpg" />
+    <meta property="og:image" content="<?php bloginfo('stylesheet_directory'); ?>/images/ledgo-logo.jpg" />
     <meta property="og:url" content="<?php the_permalink(); ?>"/>
     <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
 
@@ -62,40 +60,16 @@
       ga('send', 'pageview');
     </script>
   </head>
-  <body>
-    <div class="banner"></div>
-    <div class="contact-wrapper">
-      <div class="contact">
-        <div class="belons">Bel ons: <a href="tel:+31356016033">(035) 601 60 33</a></div>
-        <div class="social">
-          <a class="social-icon" href="http://www.facebook.com/pages/De-Jong-Accountants-en-Belastingadviseurs/177096265656584" target="_blank">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a class="social-icon" href="http://www.linkedin.com/company/de-jong-accountants-en-belastingadviseurs" target="_blank">
-            <i class="fa fa-linkedin"></i>
-          </a>
+  <body class="<?php if(is_admin_bar_showing()) { ?>adminbar-showing<?php } ?>">
+    <div class="wrapper">
+      <header>
+        <h1 class="site-title">
+          <span class="text"><?php bloginfo('name'); ?></span>
+        </h1>
+        <nav class="animate fadeIn one">
+          <?php wp_nav_menu(array('container' => '', 'theme_location' => 'primary')); ?>
+        </nav>
+        <div class="payoff animate fadeIn two">
+          <div class="inner"><?php bloginfo('description'); ?></span>
         </div>
-        <div class="menu-icon">
-          <a class="menu-link" href="javascript:void(0)">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-        <div class="mailons">
-          <a class="social-icon" href="http://www.facebook.com/pages/De-Jong-Accountants-en-Belastingadviseurs/177096265656584" target="_blank">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a class="social-icon" href="http://www.linkedin.com/company/de-jong-accountants-en-belastingadviseurs" target="_blank">
-            <i class="fa fa-linkedin"></i>
-          </a>
-          <a class="advies" href="mailto:info@dejongaccountants.nl">Vraag ons om advies</a>
-        </div>
-      </div>
-    </div>
-    <header>
-      <h1>
-        <a href="/">
-          <span><?php bloginfo('name'); ?></span>
-          <img class="dejong-logo" src="<?php bloginfo('stylesheet_directory'); ?>/images/dejong-logo.svg" />
-        </a>
-      </h1>
-    </header>
+      </header>

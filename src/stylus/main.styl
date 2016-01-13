@@ -18,7 +18,6 @@ body
       main
         top ($menubar_height + 32px)
 
-
   h1, h1, h3, h4, h5, h6
     font-weight 700
 
@@ -35,12 +34,35 @@ body
       fixed()
       background-color $black
       top 0
+      z-index 100
 
       h1
         display none
 
+      .mobile-menu
+        display none
+
+        +mobile()
+          display block
+          cursor pointer
+          span(1/12)
+
+        .fa-bars
+          display block
+          text-align center
+          line-height $menubar_height
+
       .payoff
-        span(4/12)
+        +desktop()
+          display block
+          span(4/12)
+
+        +tablet()
+          display none
+
+        +mobile()
+          display block
+          span(11/12)
 
         .inner
           font-size 1em
@@ -49,8 +71,23 @@ body
           text-align right
           padding 0 1em
 
+          +mobile()
+            text-align left
+            font-size .8em
+            text-shadow 2px 2px rgba(0, 0, 0, .25);
+
       nav
-        span(8/12)
+        +desktop()
+          span(8/12)
+        +mobile()
+          display none
+          position absolute
+          top $menubar_height
+          background-color $black
+          width 100%
+
+        +tablet()
+          span(12/12)
         line-height $menubar_height
         font-size .7em
 
@@ -63,6 +100,9 @@ body
             padding 0
             margin 0
             float left
+            +mobile()
+              float none
+              text-align center
 
             a
               text-decoration none
@@ -94,19 +134,33 @@ body
                   -webkit-transform scaleX(1)
                   transform scaleX(1)
 
+              +mobile()
+                border-right 0
+                border-bottom 1px solid $gray
+
             &:last-child a
               border-right none
+
+            +mobile()
+              &:first-child a
+                border-top 1px solid $gray
 
     main
       center($maxwidth)
       span(12/12)
-      fixed()
+      +desktop()
+        fixed()
+      +tablet()
+        fixed()
+      +mobile()
+        position relative
       display block
       top $menubar_height
       bottom 25px
       background-image url('./img/empty-room.jpg')
       background-repeat no-repeat
       background-size cover
+      z-index 1
 
       .ledgo-logo
         width 75px
@@ -115,16 +169,30 @@ body
         background-repeat no-repeat
         position absolute
         top .5em
-        right .5em
+
+        +desktop()
+          right .5em
+        +tablet()
+          right .5em
+        +mobile()
+          left 50%
+          transform translateX(-50%)
 
       .content
-        span(4/12, offset: 4/12)
-        background-color $black
-        height 80%
-        align(vertical)
-        border-radius 10px
+        +desktop()
+          span(4/12, offset: 4/12)
+          content()
+        +tablet()
+          span(8/12, offset: 2/12)
+          content()
+        +mobile()
+          span(10/12, offset: 1/12)
+          position static
+          height auto
+          transform none
+          margin-top 100px
         font-size .9em
-        overflow hidden
+        background-color $black
         margin-top 1em
         margin-bottom 1em
 
@@ -148,13 +216,25 @@ body
     footer
       center($maxwidth)
       span(12/12)
-      fixed()
-      bottom 0
+      +desktop()
+        fixed()
+        bottom 0
+      +tablet()
+        fixed()
+        bottom 0
+      +mobile()
+        position relative
+        margin-top 1em
       background-color $black
+      z-index 10
 
       .copy
         font-size .8em
         span(6/12)
+        +mobile()
+          span(12/12)
+          text-align center
+          font-size .6em
         line-height 25px
 
         .inner
@@ -162,6 +242,10 @@ body
 
       nav
         span(6/12)
+        +mobile()
+          span(12/12)
+          text-align center
+
         font-size .7em
 
         ul
@@ -173,6 +257,9 @@ body
             padding 0
             margin 0
             float right
+            +mobile()
+              float none
+              display inline-block
 
             a
               text-decoration none
@@ -181,9 +268,55 @@ body
               display block
               padding .5em
               border-left 1px solid $gray
+              +mobile()
+                border-left 0
+                border-right 1px solid $gray
 
               &:hover
                 color $white
 
             &:last-child a
-              border-left none
+              border-left 0
+              +mobile()
+                border-right 0
+
+  .wpcf7
+    form.wpcf7-form
+      margin-bottom 2em
+
+      .wpcf7-validation-errors, .wpcf7-mail-sent-ok
+        border 0
+        font-weight bold
+
+      .wpcf7-response-output
+        margin-left 0
+        margin-right 0
+        padding-left 0
+        padding-right 0
+
+      .wpcf7-not-valid-tip
+        font-style italic
+        font-size .9em
+
+      input, textarea
+        width 95%
+        color $black
+
+      input.wpcf7-submit
+        // submit button
+        background-color $black
+        color $white
+        line-height 1.1em
+        border 1px solid $white
+        border-radius 10px
+        font-weight bold
+        width auto
+
+
+      select
+        font-family $font
+        font-weight 300
+        font-size 1rem
+        width 95%
+        height 1.1em
+        color $black

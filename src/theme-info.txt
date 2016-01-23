@@ -1,0 +1,12 @@
+/*
+Theme Name: LedGo Interior Panels
+Theme URI: http://www.ledgointeriorpanels.com/
+Author: Jelle de Jong
+Author URI: http://www.hoest.nl/
+Description: WordPress theme created by Jelle de Jong for LedGo Interior Panels.
+Version: 1.0
+License: The MIT License (MIT)
+License URI:
+Tags:
+Text Domain:
+*/

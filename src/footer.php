@@ -9,6 +9,9 @@
       </footer>
     </div>
 
+    <script>
+      window.templateUrl = "<?php bloginfo('stylesheet_directory'); ?>";
+    </script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<?php bloginfo('stylesheet_directory'); ?>/js/main.js"></script>
 

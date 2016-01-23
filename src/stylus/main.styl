@@ -148,19 +148,23 @@ body
     main
       center($maxwidth)
       span(12/12)
-      +desktop()
-        fixed()
-      +tablet()
-        fixed()
-      +mobile()
-        position relative
+      position relative
       display block
-      top $menubar_height
-      bottom 25px
-      background-image url('./img/empty-room.jpg')
+      // top $menubar_height
+      // bottom 25px
       background-repeat no-repeat
       background-size cover
       z-index 1
+      transition background-image 1.5s linear
+      margin-top $menubar_height
+      padding-top 2em
+      padding-bottom 2em
+
+      &.fixed
+        fixed()
+        top $menubar_height
+        bottom 25px
+        margin-top 0
 
       .ledgo-logo
         width 75px
@@ -181,20 +185,18 @@ body
       .content
         +desktop()
           span(4/12, offset: 4/12)
-          content()
         +tablet()
           span(8/12, offset: 2/12)
-          content()
         +mobile()
           span(10/12, offset: 1/12)
-          position static
-          height auto
-          transform none
-          margin-top 100px
+        position static
+        height auto
+        transform none
         font-size .9em
         background-color $black
-        margin-top 1em
-        margin-bottom 1em
+        margin-top 2em
+        margin-bottom 2em
+        border-radius 10px
 
         .inner
           overflow auto
@@ -216,17 +218,14 @@ body
     footer
       center($maxwidth)
       span(12/12)
-      +desktop()
-        fixed()
-        bottom 0
-      +tablet()
-        fixed()
-        bottom 0
-      +mobile()
-        position relative
-        margin-top 1em
+      position relative
+      margin 0
       background-color $black
       z-index 10
+
+      &.fixed
+        fixed()
+        bottom 0
 
       .copy
         font-size .8em

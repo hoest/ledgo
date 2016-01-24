@@ -10,6 +10,25 @@ body
   font-family $font
   font-weight 300
 
+  .alignright
+    float right
+    margin 1em
+
+  .wp-caption
+    width auto!important
+
+  img
+    max-width 100%
+    width auto
+    height auto
+
+  .aligncenter
+    text-align center
+
+  .wp-caption-text
+    font-size 90%
+    font-style italic
+
   &.adminbar-showing
     .wrapper
       header
@@ -150,11 +169,10 @@ body
       span(12/12)
       position relative
       display block
-      // top $menubar_height
-      // bottom 25px
       background-repeat no-repeat
       background-size cover
       background-image url('./img/interieur.jpg')
+      background-attachment fixed
       z-index 1
       transition background-image 1.5s linear
       margin-top $menubar_height

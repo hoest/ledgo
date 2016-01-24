@@ -20,5 +20,8 @@
     "jeet": "^6.1.2",
     "jshint-stylish": "^2.0.1",
     "rupture": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server ./_public -a 0.0.0.0 -p 8080 -o"
   }
 }

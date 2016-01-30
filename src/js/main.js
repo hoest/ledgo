@@ -12,28 +12,28 @@ function isDesktop() {
 
 function showContent() {
   if($('article.processed').length){
-    return false
+    return false;
   }
 
-  $('article .inner p').hide();
-  $('article .inner p:first').show();
-  $('article .inner').append('<p class="read-more-par aligncenter"><a class="read-more" href>Read more</a></p>');
+  $('article .inner .entry-content>*').hide();
+  $('article .inner .entry-content>*:first').show();
+  $('article .inner .entry-content').append('<p class="read-more-par aligncenter"><a class="read-more" href>Read more</a></p>');
   $('article .inner a.read-more').off('click').on('click', function(e) {
     e.preventDefault();
     var collapsed = $(this).closest('article').hasClass('collapsed');
-    var $inner = $(this).closest('.inner');
+    var $inner = $(this).closest('.inner .entry-content');
 
     if(collapsed) {
       // uitklappen
       $(this).closest('article').removeClass('collapsed');
-      $inner.find('p').show();
+      $inner.find('>*').show();
       $inner.find('a.read-more').text('Read less');
     }
     else {
       // inklappen
       $(this).closest('article').addClass('collapsed');
-      $inner.find('p:not(.read-more-par)').hide();
-      $inner.find('p:first').show();
+      $inner.find('>*:not(.read-more-par)').hide();
+      $inner.find('>*:first').show();
       $inner.find('a.read-more').text('Read more');
     }
 
@@ -45,6 +45,15 @@ function showContent() {
 }
 
 function resize() {
+  if(!isMobile()) {
+    showContent();
+  }
+  else {
+    $('article .inner .entry-content>*').show();
+    $('article .inner .entry-content>p.read-more-par').remove();
+    $('article').removeClass('collapsed processed');
+  }
+
   wHeight = $(window).outerHeight();
   mainHeight = $('main').outerHeight() + 35 + 25;
   if(wHeight > mainHeight) {
@@ -52,15 +61,6 @@ function resize() {
   }
   else {
     $('main, footer').removeClass('fixed');
-  }
-
-  if(!isMobile()) {
-    showContent();
-  }
-  else {
-    $('article .inner p').show();
-    $('article .inner p.read-more-par').remove();
-    $('article').removeClass('collapsed processed');
   }
 }
 
@@ -70,7 +70,11 @@ $(function() {
     location.href = '/';
   });
 
-  $('.mobile-menu i').off('click').on('click', function() {
+  $('.mobile-menu i, .payoff').off('click').on('click', function() {
+    if(!isMobile()) {
+      return false;
+    }
+
     var nav = $(this).closest('header').find('nav');
     var height = $(window).height() - $('header').height();
     nav.height(height).css('overflow-y', 'auto');

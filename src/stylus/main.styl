@@ -80,6 +80,10 @@ body
 
   a
     color $orange
+    text-decoration none
+
+    &:hover
+      text-decoration underline
 
   .wrapper
     position relative
@@ -169,7 +173,7 @@ body
               text-transform uppercase
               display block
               padding 0 .5em
-              border-right 1px solid $white
+              border-right 1px solid $gray
               color $white
               position relative
 
@@ -234,7 +238,7 @@ body
         fixed()
         top $menubar_height
         bottom 25px
-        margin-top 0
+        margin 0
 
         .content
           margin-left 0
@@ -259,17 +263,21 @@ body
       .content
         +desktop()
           span(4/12, offset: 4/12)
+          margin-top 2em
+          margin-bottom 2em
         +tablet()
           span(8/12, offset: 2/12)
+          margin-top 2em
+          margin-bottom 2em
         +mobile()
           span(10/12, offset: 1/12)
+          margin-top 3em
+          margin-bottom 2em
         position static
         height auto
         transform none
         font-size .9em
         background-color $black
-        margin-top 2em
-        margin-bottom 2em
         border-radius 10px
 
         .inner
@@ -277,6 +285,21 @@ body
           height 100%
           padding 0 1em
           margin 1em 0
+
+        .read-more
+          display inline-block
+          line-height 1.1em
+          border 1px solid $orange
+          border-radius 10px
+          font-weight bold
+          padding .5em
+          transition all 0.6s ease-in-out 0s
+
+          &:hover
+            background-color $orange
+            border-color $white
+            color $white
+            text-decoration none
 
         h1, h2, h3, h4, h5, h6
           font-weight 400
@@ -341,10 +364,10 @@ body
               display block
               padding .5em
               color $white
-              border-left 1px solid $white
+              border-left 1px solid $gray
               +mobile()
                 border-left 0
-                border-right 1px solid $white
+                border-right 1px solid $gray
 
               &:hover
                 color $orange
@@ -379,13 +402,20 @@ body
       input.wpcf7-submit
         // submit button
         background-color $black
-        color $white
+        color $orange
         line-height 1.1em
-        border 1px solid $white
+        border 1px solid $orange
         border-radius 10px
         font-weight bold
         width auto
+        padding .5em
+        transition all 0.6s ease-in-out 0s
 
+        &:hover
+          background-color $orange
+          border-color $white
+          color $white
+          text-decoration none
 
       select
         font-family $font
@@ -394,3 +424,41 @@ body
         width 95%
         height 1.1em
         color $black
+
+@media print
+  body
+    header
+      width 100%
+
+      h1
+        display block!important
+
+      nav, .payoff
+        display none!important
+
+    main
+      position static!important
+      width 100%
+      padding 0
+      margin 0
+
+      .ledgo-logo
+        display none!important
+
+      .collapsed
+        width 100%
+        position static!important
+
+        .inner .entry-content
+          &>*
+            display block!important
+
+          .read-more-par
+            display none!important
+
+    footer
+      width 100%
+
+      nav
+        display none!important
+

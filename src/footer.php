@@ -9,6 +9,10 @@
       </footer>
     </div>
 
+    <div class="is-mobile"></div>
+    <div class="is-tablet"></div>
+    <div class="is-desktop"></div>
+
     <script>
       window.templateUrl = "<?php bloginfo('stylesheet_directory'); ?>";
     </script>

@@ -35,6 +35,21 @@ body
   font-weight 300
   font-size 1.2em
 
+  .is-mobile
+    display none
+    +mobile()
+      display block
+
+  .is-tablet
+    display none
+    +tablet()
+      display block
+
+  .is-desktop
+    display none
+    +desktop()
+      display block
+
   .alignright
     float right
     margin 1em
@@ -220,6 +235,10 @@ body
         top $menubar_height
         bottom 25px
         margin-top 0
+
+        .content
+          margin-left 0
+          align(both)
 
       .ledgo-logo
         width 75px

@@ -11,35 +11,54 @@ function isDesktop() {
 }
 
 function showContent() {
-  if($('article.processed').length){
+  if($('article.processed').length) {
     return false;
   }
 
-  $('article .inner .entry-content>*').hide();
-  $('article .inner .entry-content>*:first').show();
-  $('article .inner .entry-content').append('<p class="read-more-par aligncenter"><a class="read-more" href>Read more</a></p>');
-  $('article .inner a.read-more').off('click').on('click', function(e) {
-    e.preventDefault();
-    var collapsed = $(this).closest('article').hasClass('collapsed');
-    var $inner = $(this).closest('.inner .entry-content');
+  var $content = $('article .inner .entry-content');
+  var readMore = false;
+  if($content.find('.wpcf7').length) {
+    $content.find('.wpcf7').nextAll().hide();
+    readMore = $content.find('.wpcf7').nextAll().length > 1;
+  }
+  else {
+    $content.find('>*').hide();
+    $content.find('>*:first').show();
+    readMore = $content.find('>*').length > 1;
+  }
 
-    if(collapsed) {
-      // uitklappen
-      $(this).closest('article').removeClass('collapsed');
-      $inner.find('>*').show();
-      $inner.find('a.read-more').text('Read less');
-    }
-    else {
-      // inklappen
-      $(this).closest('article').addClass('collapsed');
-      $inner.find('>*:not(.read-more-par)').hide();
-      $inner.find('>*:first').show();
-      $inner.find('a.read-more').text('Read more');
-    }
+  if(readMore) {
+    $content.append('<p class="read-more-par aligncenter"><a class="read-more" href>Read more</a></p>');
 
-    resize();
-    return false;
-  });
+    $('article .inner a.read-more').off('click').on('click', function(e) {
+      e.preventDefault();
+      var collapsed = $(this).closest('article').hasClass('collapsed');
+      var $inner = $(this).closest('.inner .entry-content');
+
+      if(collapsed) {
+        // uitklappen
+        $(this).closest('article').removeClass('collapsed');
+        $inner.find('>*').show();
+        $inner.find('a.read-more').text('Read less');
+      }
+      else {
+        // inklappen
+        $(this).closest('article').addClass('collapsed');
+        if($inner.find('.wpcf7').length) {
+          $inner.find('.wpcf7').nextAll(':not(.read-more-par)').hide();
+        }
+        else {
+          $inner.find('>*:not(.read-more-par)').hide();
+          $inner.find('>*:first').show();
+        }
+
+        $inner.find('a.read-more').text('Read more');
+      }
+
+      resize();
+      return false;
+    });
+  }
 
   $('article').addClass('collapsed processed');
 }
